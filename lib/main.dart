@@ -3,6 +3,8 @@ import 'package:flutter_sqlite/contact.dart';
 import 'package:flutter_sqlite/contactdataaccess.dart';
 import 'package:get/get.dart';
 
+import 'contact_detail.dart';
+
 void main(List<String> args) {
   runApp(MyApp());
 }
@@ -39,17 +41,21 @@ class MyApp extends StatelessWidget {
                     title: Text(contact.name),
                     subtitle: Text(contact.phone),
                     trailing: Text(contact.email),
+                    onTap: () async {
+                      await Get.to(() => ContactDetail(id: contact.id));
+                      loadData();
+                    },
+                    onLongPress: () async {
+                      await dataAccess.delete(contact.id);
+                      loadData();
+                    },
                   );
                 },
               )),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            dataAccess.insert(Contact(
-                id: 0,
-                name: "Agus",
-                email: "agus@gmail.com",
-                phone: "0812345678"));
+          onPressed: () async {
+            await Get.to(() => ContactDetail(id: 0)); // Form kosong untuk input baru
             loadData();
           },
           child: Icon(Icons.add),
