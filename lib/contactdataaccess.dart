@@ -31,21 +31,21 @@ class ContactDataAccess {
   }
 
   update(Contact contact) async {
-    // final db = await DatabaseProvider.db.database;
-    // var result = await db.update("Contact", contact.toMap(),
-    //     where: "id = ?", whereArgs: [contact.id]);
-    // return result;
+    final db = await DatabaseProvider.db.database;
+    var result = await db.update("Contact", contact.toMap(),
+        where: "id = ?", whereArgs: [contact.id]);
+    return result;
   }
 
   delete(Contact contact) async {
-    // final db = await DatabaseProvider.db.database;
-    // var result = await db.delete("Contact", where: "id = ?", whereArgs: [id]);
-    // return result;
+    final db = await DatabaseProvider.db.database;
+    var result = await db.delete("Contact", where: "id = ?", whereArgs: [id]);
+    return result;
   }
 
   deleteAll() async {
-    // final db = await DatabaseProvider.db.database;
-    // var result = await db.delete("Contact");
-    // return result;
+    final db = await DatabaseProvider.db.database;
+    var result = await db.delete("Contact");
+    return result;
   }
 }
