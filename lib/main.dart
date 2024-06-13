@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   final ContactDataAccess dataAccess = ContactDataAccess();
   final RxList<Contact> list = <Contact>[].obs;
 
-  Future<void> loadData() async {
+  loadData() async {
     var contacts = await dataAccess.getAll();
     list.clear();
     list.addAll(contacts);
@@ -44,13 +44,13 @@ class MyApp extends StatelessWidget {
               )),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            await dataAccess.insert(Contact(
+          onPressed: () {
+            dataAccess.insert(Contact(
                 id: 0,
                 name: "Agus",
                 email: "agus@gmail.com",
                 phone: "0812345678"));
-            await loadData();
+            loadData();
           },
           child: Icon(Icons.add),
         ),
