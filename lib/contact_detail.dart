@@ -13,7 +13,8 @@ class ContactDetail extends StatelessWidget {
   var nameCtl = TextEditingController();
   var emailCtl = TextEditingController();
   var phoneCtl = TextEditingController();
-
+  var formKey = GlobalKey<FormState>();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +40,24 @@ class ContactDetail extends StatelessWidget {
               SizedBox(height: 20,),
               SizedBox(
                 height: 40,
-              child: ElevatedButton(onPressed: (){},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)
-                )),
-              ),),
+                child: ElevatedButton(onPressed: (){},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8))),
+                child : Text("Save", style: TextStyle(color: Colors.white),)     
+              )),
+              SizedBox( height : 20 ),
+              SizedBox(
+                height: 40,
+                child: ElevatedButton(onPressed: (){},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8))),
+                child : Text("Delete", style: TextStyle(color: Colors.white),)     
+              )),
+              
             ],
           )
         ),
